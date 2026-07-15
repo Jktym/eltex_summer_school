@@ -1,0 +1,80 @@
+root@eltex-practice2-v16:~#START=$(journalctl -b -n +1 -o short-unix | awk '{print $1}')
+root@eltex-practice2-v16:~# END=$(echo $START + 20 | bc)
+root@eltex-practice2-v16:~# journalctl -b --since "@$START" --until "@$END" | head -5
+Jul 09 15:04:54 localhost kernel: Linux version 6.8.0-134-generic (buildd@lcy02-amd64-007) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #134-Ubuntu SMP PREEMPT_DYNAMIC Fri Jun 26 18:43:11 UTC 2026 (Ubuntu 6.8.0-134.134-generic 6.8.12)
+Jul 09 15:04:54 localhost kernel: Command line: BOOT_IMAGE=/vmlinuz-6.8.0-134-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+Jul 09 15:04:54 localhost kernel: KERNEL supported cpus:
+Jul 09 15:04:54 localhost kernel:   Intel GenuineIntel
+Jul 09 15:04:54 localhost kernel:   AMD AuthenticAMD
+root@eltex-practice2-v16:~# journalctl -b --since "@$START" --until "@$END" | tail -n 5
+Jul 09 15:05:04 localhost lvm[498]: VG ubuntu-vg finished
+Jul 09 15:05:12 localhost systemd[1]: Found device dev-disk-by\x2duuid-c3f8f018\x2df5f7\x2d4a5d\x2d92a1\x2d12ee87108672.device - QEMU_HARDDISK 2.
+Jul 09 15:05:12 localhost systemd[1]: Starting systemd-fsck@dev-disk-by\x2duuid-c3f8f018\x2df5f7\x2d4a5d\x2d92a1\x2d12ee87108672.service - File System Check on /dev/disk/by-uuid/c3f8f018-f5f7-4a5d-92a1-12ee87108672...
+Jul 09 15:05:12 localhost systemd[1]: Started systemd-fsckd.service - File System Check Daemon to report status.
+Jul 09 15:05:13 localhost systemd[1]: Finished systemd-journal-flush.service - Flush Journal to Persistent Storage.
+
+root@eltex-practice2-v16:~# find / -name 'auth.log' -exec awk '{message = ""; for(i=5; i<=NF;i++) message=message " " $i; print $3 message}' {} + | sed 's/\[[0-9]*\]//' | head -n 5 | sort
+CRON: session closed for user root
+CRON: session closed for user root
+CRON: session opened for user root(uid=0) by root(uid=0)
+CRON: session opened for user root(uid=0) by root(uid=0)
+CRON: session opened for user root(uid=0) by root(uid=0)
+root@eltex-practice2-v16:~# find / -name 'auth.log' -exec awk '{message = ""; for(i=5; i<=NF;i++) message=message " " $i; print $3 message}' {} + | sed 's/\[[0-9]*\]//' | tail -5 | sort 
+CRON: session closed for user root
+CRON: session closed for user root
+CRON: session closed for user root
+CRON: session opened for user root(uid=0) by root(uid=0)
+CRON: session opened for user root(uid=0) by root(uid=0)
+
+root@eltex-practice2-v16:~# find / -name 'auth.log' -exec awk '{message = ""; for(i=5; i<=NF;i++) message=message " " $i; print $3 message}' {} + | sed 's/\[[0-9]*\]//' | sort | uniq -c | sort -rn
+    508 CRON: session opened for user root(uid=0) by root(uid=0)
+    508 CRON: session closed for user root
+      1 sshd: signal 15; terminating.
+
+root@eltex-practice2-v16:~# awk -F: 'NR==FNR{split($4,u,",");for(i in u)g[u[i]]=g[u[i]]?g[u[i]]","$1:$1;next}$7=="/usr/sbin/nologin"{print $3","$1","g[$1]}' /etc/group /etc/passwd | sort -t, -k1 -rn
+65534,nobody,
+1003,user3,users,myusers
+998,systemd-network,
+997,systemd-timesync,
+992,systemd-resolve,
+991,polkitd,
+989,fwupd-refresh,
+109,sshd,
+108,usbmux,
+107,landscape,
+105,tcpdump,
+104,uuidd,
+103,syslog,adm
+101,messagebus,
+42,_apt,
+39,irc,
+38,list,
+34,backup,
+33,www-data,
+13,proxy,
+10,uucp,
+9,news,
+8,mail,
+7,lp,
+6,man,
+5,games,
+3,sys,
+2,bin,
+1,daemon,
+
+root@eltex-practice2-v16:~# wc -l /var/log/kern.log
+44 /var/log/kern.log
+root@eltex-practice2-v16:~# awk -v RS= '{split($0,l,"\n");for(i in l){split(l[i],kv,": ");d[kv[1]]=kv[2]}print "Commandline: "d["Commandline"]" ; Start-Date: "d["Start-Date"]" ; End-Date: "d["End-Date"];delete d}' /var/log/apt/history.log | head -n 5
+Commandline: apt-get install --reinstall apt ; Start-Date: 2025-02-16  20:51:22 ; End-Date: 2025-02-16  20:51:24
+Commandline: apt-get install --reinstall base-files ; Start-Date: 2025-02-16  20:51:26 ; End-Date: 2025-02-16  20:51:28
+Commandline: apt-get install --reinstall base-passwd ; Start-Date: 2025-02-16  20:51:31 ; End-Date: 2025-02-16  20:51:32
+Commandline: apt-get install --reinstall bash ; Start-Date: 2025-02-16  20:51:35 ; End-Date: 2025-02-16  20:51:37
+Commandline: apt-get install --reinstall bsdutils ; Start-Date: 2025-02-16  20:51:39 ; End-Date: 2025-02-16  20:51:41
+
+root@eltex-practice2-v16:~# awk -v RS= '{split($0,l,"\n");for(i in l){split(l[i],kv,": ");d[kv[1]]=kv[2]}print "Commandline: "d["Commandline"]" ; Start-Date: "d["Start-Date"]" ; End-Date: "d["End-Date"];delete d}' /var/log/apt/history.log | tail -n 5
+Commandline: apt install p7zip-full ; Start-Date: 2026-07-09  19:48:39 ; End-Date: 2026-07-09  19:48:48
+Commandline: apt install bzip2 ; Start-Date: 2026-07-09  19:56:18 ; End-Date: 2026-07-09  19:56:21
+Commandline: /usr/bin/unattended-upgrade ; Start-Date: 2026-07-10  06:13:59 ; End-Date: 2026-07-10  06:14:07
+Commandline: /usr/bin/unattended-upgrade ; Start-Date: 2026-07-10  06:14:10 ; End-Date: 2026-07-10  06:14:14
+Commandline: /usr/bin/unattended-upgrade ; Start-Date: 2026-07-14  06:19:16 ; End-Date: 2026-07-14  06:19:33
+

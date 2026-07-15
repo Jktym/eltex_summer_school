@@ -1,0 +1,306 @@
+eltex-v16@eltex-2026-summer-11-32$ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/eltex-v16/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/eltex-v16/.ssh/id_rsa
+Your public key has been saved in /home/eltex-v16/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:JObtKrePuu7jrOsURT/FErv0kUjtUXEzFXaTTYdSJUw eltex-v16@eltex-2026-summer
+The key's randomart image is:
++---[RSA 3072]----+
+|    . o+..o.+=E*B|
+|   . o.++. ..+o++|
+|    . Oo+.   .   |
+|   . + B..       |
+|  .   o S        |
+|   .   .         |
+|  .     .        |
+| . .o .o         |
+| .+*B*+o.        |
++----[SHA256]-----+
+eltex-v16@eltex-2026-summer-11-32$ssh-copy-id root@172.16.9.190
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/eltex-v16/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+root@172.16.9.190's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'root@172.16.9.190'"
+	and check to make sure that only the key(s) you wanted were added.
+
+eltex-v16@eltex-2026-summer-11-47$cat ~/.ssh/*.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqefJPG6RUJhV9A24HcDSCjJaWVS0KghNcGYTAEEVqJikag17/VK4OUB3+eWBZgoK2oJGsU8M5R2vBpt/mu/YJsiuFYgixaH2IhzWrzXji2n3p/g+ggyuOL8I1h3cDbyNLcRg320ikOOww3KduW6QQYHTtheMUFnot7p+jJwXS3vVjdNjyIqAi3Ilis1kmHtDl9kWyVgMy3Snhwe+iB6F5aT3GLyJidxLjGSpuAd1hLtIrLOeAx34Hvmj/oJO3r/Z0NaH5bxmUPNJRPiIVVHuOrjHPtzBuuuvUGgmcLv3tVk1JPfFuJQK8fnHYSa4b/4/iXf4WgBfkjyrOe+X15A4gvKg+5EZlRcEHo6Qs/QxyqzaEkKZAAvd2hMHSx+wt1ZSCi8JGtnfJXDEEX0NcMq32knYOFbOd8xO9isP7vg0NBWz5B+XuXZm/XCHzzMVwELRj9rEHpubo09wGIaqM++Um5+6XjZRccz/VgPFelSBl1cBOUPwQxI9EJIosIH6YX8E= eltex-v16@eltex-2026-summer
+
+root@eltex-practice2-v16:~# cat ~/.ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqefJPG6RUJhV9A24HcDSCjJaWVS0KghNcGYTAEEVqJikag17/VK4OUB3+eWBZgoK2oJGsU8M5R2vBpt/mu/YJsiuFYgixaH2IhzWrzXji2n3p/g+ggyuOL8I1h3cDbyNLcRg320ikOOww3KduW6QQYHTtheMUFnot7p+jJwXS3vVjdNjyIqAi3Ilis1kmHtDl9kWyVgMy3Snhwe+iB6F5aT3GLyJidxLjGSpuAd1hLtIrLOeAx34Hvmj/oJO3r/Z0NaH5bxmUPNJRPiIVVHuOrjHPtzBuuuvUGgmcLv3tVk1JPfFuJQK8fnHYSa4b/4/iXf4WgBfkjyrOe+X15A4gvKg+5EZlRcEHo6Qs/QxyqzaEkKZAAvd2hMHSx+wt1ZSCi8JGtnfJXDEEX0NcMq32knYOFbOd8xO9isP7vg0NBWz5B+XuXZm/XCHzzMVwELRj9rEHpubo09wGIaqM++Um5+6XjZRccz/VgPFelSBl1cBOUPwQxI9EJIosIH6YX8E= eltex-v16@eltex-2026-summer
+
+
+root@eltex-practice2-v16:/# useradd -m -s /bin/bash user1
+
+root@eltex-practice2-v16:/# passwd user1
+New password: 
+Retype new password: 
+passwd: password updated successfully
+
+root@eltex-practice2-v16:~# adduser user2
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "ru_RU.UTF8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+info: Adding user `user2' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user2' (1003) ...
+info: Adding new user `user2' (1003) with group `user2 (1003)' ...
+info: Creating home directory `/home/user2' ...
+info: Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user2
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+info: Adding user `user2' to group `users' ...
+
+
+t@eltex-practice2-v16:~# adduser user3
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "ru_RU.UTF8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+info: Adding user `user3' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user3' (1003) ...
+info: Adding new user `user3' (1003) with group `user3 (1003)' ...
+info: Creating home directory `/home/user3' ...
+info: Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for user3
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+info: Adding user `user3' to group `users' ...
+
+root@eltex-practice2-v16:~# usermod -s /usr/sbin/nologin user3
+
+
+root@eltex-practice2-v16:~# su user3
+This account is currently not available.
+root@eltex-practice2-v16:~# su -s /bin/bash - user3
+user3@eltex-practice2-v16:~$ logout
+root@eltex-practice2-v16:~# 
+
+root@eltex-practice2-v16:~# groupadd myusers
+root@eltex-practice2-v16:~# usermod -aG myusers user1
+root@eltex-practice2-v16:~# usermod -aG myusers user2
+root@eltex-practice2-v16:~# usermod -aG myusers user3
+
+root@eltex-practice2-v16:~# groups user1
+user1 : user1 myusers
+root@eltex-practice2-v16:~# groups user2
+user2 : user2 users myusers
+root@eltex-practice2-v16:~# groups user3
+user3 : user3 users myusers
+
+root@eltex-practice2-v16:/# mkdir -p opt/share
+root@eltex-practice2-v16:/# chown :myusers /opt/share
+root@eltex-practice2-v16:/# chmod g+s /opt/share
+root@eltex-practice2-v16:/# chmod g+rwx /opt/share
+root@eltex-practice2-v16:/# ls -ld /opt/share
+drwxrwsr-x 2 root myusers 4096 Jul  9 16:41 /opt/share
+
+root@eltex-practice2-v16:~# echo "umask 007" >> /home/user1/.bashrc
+
+root@eltex-practice2-v16:~# su user1
+user1@eltex-practice2-v16:/root$ touch -p /opt/share/user1.txt
+touch: invalid option -- 'p'
+Try 'touch --help' for more information.
+user1@eltex-practice2-v16:/root$ touch /opt/share/user1.txt
+user1@eltex-practice2-v16:/root$ su user2
+Password: 
+user2@eltex-practice2-v16:/root$ touch /opt/share/user2.txt
+root@eltex-practice2-v16:~# su -s /bin/bash user3
+user3@eltex-practice2-v16:/root$ touch /opt/share/user3.txt
+user3@eltex-practice2-v16:/root$ ls /opt/share
+user1.txt  user2.txt  user3.txt
+user3@eltex-practice2-v16:/root$ rm /opt/share/user1.txt
+user3@eltex-practice2-v16:/root$ rm /opt/share/user2.txt
+user3@eltex-practice2-v16:/root$ rm /opt/share/user3.txt
+
+root@eltex-practice2-v16:~# chmod +t /opt/share
+root@eltex-practice2-v16:~# su user1
+user1@eltex-practice2-v16:/root$ touch /opt/share/user1.txt
+user1@eltex-practice2-v16:/root$ su user2
+Password:
+user2@eltex-practice2-v16:/root$ touch /opt/share/user2.txt
+user2@eltex-practice2-v16:/root$ exit
+root@eltex-practice2-v16:~# su -s /bin/bash user3
+user3@eltex-practice2-v16:/root$ touch /opt/share/user3.txt
+root@eltex-practice2-v16:~# su user1
+user1@eltex-practice2-v16:/root$ rm /opt/share/user2.txt
+rm: cannot remove '/opt/share/user2.txt': Operation not permitted
+user1@eltex-practice2-v16:/root$ su user2
+Password:
+user2@eltex-practice2-v16:/root$ rm /opt/share/user1.txt
+rm: cannot remove '/opt/share/user1.txt': Operation not permitted
+user2@eltex-practice2-v16:/root$ rm /opt/share/user2.txt
+
+root@eltex-practice2-v16:~# which dmesg
+/usr/bin/dmesg
+root@eltex-practice2-v16:~# visudo -f /etc/sudoers.d/user1_dmesg
+user1 ALL=(root) NOPASSWD: /usr/bin/dmesg
+
+root@eltex-practice2-v16:~# su - user1
+user1@eltex-practice2-v16:~$ dmesg
+dmesg: read kernel buffer failed: Operation not permitted
+user1@eltex-practice2-v16:~$ sudo dmesg | tail -n 5
+[  139.539850] audit: type=1400 audit(1783609546.678:121): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=706 comm="apparmor_parser"
+[  193.417933] loop0: detected capacity change from 0 to 8
+[  194.157403] audit: type=1400 audit(1783609602.163:122): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=835 comm="apparmor_parser"
+[  194.163115] audit: type=1400 audit(1783609602.169:123): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="/usr/lib/snapd/snap-confine//mount-namespace-capture-helper" pid=835 comm="apparmor_parser"
+[  202.518703] NET: Registered PF_QIPCRTR protocol family
+
+root@eltex-practice2-v16:~# vim /home/show_dmesh.sh
+
+#!/bin/bash
+dmesg | tail -n 5
+
+root@eltex-practice2-v16:~# chmod o+x /home/show_dmesh.sh
+root@eltex-practice2-v16:~# ls -ld /home/show_dmesh.sh 
+-rw-r--r-x 1 root root 30 Jul  9 18:45 show_dmesh.sh
+root@eltex-practice2-v16:~# chmod u+s /home/show_dmesh.sh 
+root@eltex-practice2-v16:~# ls -ld /home/show_dmesh.sh 
+-rwSr--r-x 1 root root 30 Jul  9 18:45 show_dmesh.sh
+root@eltex-practice2-v16:~# su - user2
+user2@eltex-practice2-v16:~$ /home/show_dmesh.sh 
+dmesg: read kernel buffer failed: Operation not permitted
+
+root@eltex-practice2-v16:~# usermod -f 10 user1
+root@eltex-practice2-v16:~# usermod -f 10 user2
+root@eltex-practice2-v16:~# usermod -f 10 user3
+
+vim /etc/motd
+Erkenov Daniyar
+
+root@eltex-practice2-v16:~# rsync -a /etc/ /root/etc_backup/
+root@eltex-practice2-v16:~# tar -czf /root/gzip_archive /root/etc_backup/
+tar: Removing leading `/' from member names
+root@eltex-practice2-v16:~# ls
+etc_backup  gzip_archive
+root@eltex-practice2-v16:~# apt install bzip2
+root@eltex-practice2-v16:~# tar -cjf /root/bzip2_archive /root/etc_backup/
+tar: Removing leading `/' from member names
+root@eltex-practice2-v16:~# ls
+bzip2_archive  etc_backup  gzip_archive
+
+root@eltex-practice2-v16:~# apt update
+root@eltex-practice2-v16:~# apt install p7zip-full
+root@eltex-practice2-v16:~# 7z a -r /root/7z_archive /root/etc_backup/
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=C.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive:
+                 
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/os-release
+
+
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/resolv.conf
+
+
+WARNING: errno=2 : No such file or directory
+/root/etc_backup/mtab
+
+244 folders, 1459 files, 38596898 bytes (37 MiB)
+
+Creating archive: /root/7z_archive.7z
+
+Add new data to archive: 244 folders, 1459 files, 38596898 bytes (37 MiB)
+
+                                                                                    
+Files read from disk: 1446
+Archive size: 4618145 bytes (4510 KiB)
+
+Scan WARNINGS for files and folders:
+
+/root/etc_backup/os-release : errno=2 : No such file or directory
+/root/etc_backup/resolv.conf : errno=2 : No such file or directory
+/root/etc_backup/mtab : errno=2 : No such file or directory
+----------------
+Scan WARNINGS: 3
+
+root@eltex-practice2-v16:~# du -h 7z_archive.7z gzip_archive bzip2_archive
+4.5M    7z_archive.7z
+564K    gzip_archive
+528K    bzip2_archive
+
+root@eltex-practice2-v16:~# vim /etc/motd
+10.07.2026 01:05
+
+root@eltex-practice2-v16:~# rsync -av /etc/ /root/etc_backup/
+sending incremental file list
+./
+motd
+
+sent 66,402 bytes  received 282 bytes  133,368.00 bytes/sec
+total size is 2,332,246  speedup is 34.97
+
+root@eltex-practice2-v16:~# tar -rf /root/gzip_archive /root/etc_backup/
+tar: Removing leading `/' from member names
+tar: Removing leading `/' from hard link targets
+
+root@eltex-practice2-v16:~# tar -djf /root/bzip2_archive -C /root etc_backup/
+root@eltex-practice2-v16:~# mkdir etc_backup_7zip etc_backup_gzip
+root@eltex-practice2-v16:~# tar -xzf /root/gzip_archive -C /root/etc_backup_gzip/
+root@eltex-practice2-v16:~# 7z x 7z_archive.7z -o/root/etc_backup_7zip/
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=C.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive for archives:
+1 file, 4618145 bytes (4510 KiB)
+
+Extracting archive: 7z_archive.7z
+--
+Path = 7z_archive.7z
+Type = 7z
+Physical Size = 4618145
+Headers Size = 20492
+Method = LZMA2:24 BCJ
+Solid = +
+Blocks = 2
+
+Everything is Ok
+
+Folders: 244
+Files: 1459
+Size:       38596898
+Compressed: 4618145
+
+root@eltex-practice2-v16:~# diff etc_backup_gzip/etc_backup/motd etc_backup_7zip/etc_backup/motd
+2d1
+< 10.07.2026 1:01
+
+

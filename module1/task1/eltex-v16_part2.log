@@ -1,0 +1,131 @@
+1. eltex-v16@eltex-2026-summer-00-04$touch ${USER}_part2.log
+2. eltex-v16@eltex-2026-summer-00-04$compgen -c ls
+ls
+lsblk
+lsattr
+lscpu
+lsipc
+lsmod
+lsmem
+lspci
+lsinitramfs
+lsns
+lsusb
+lsof
+ls
+lslogins
+lsfd
+lslocks
+lsb_release
+lsirq
+lsblk
+lsattr
+lscpu
+lsipc
+lsmod
+lsmem
+lspci
+lsinitramfs
+lsns
+lsusb
+lsof
+ls
+lslogins
+lsfd
+lslocks
+lsb_release
+lsirq
+
+3. eltex-v16@eltex-2026-summer-00-04$compgen -v HIST
+HISTCMD
+HISTCONTROL
+HISTFILE
+HISTFILESIZE
+HISTSIZE
+
+4. eltex-v16@eltex-2026-summer-00-04$echo $HISTSIZE
+1000
+5. eltex-v16@eltex-2026-summer-00-04$compgen -f .
+.eltex-v16_part2.log.swp
+.
+.viminfo
+.config
+.ssh
+.profile
+.lesshst
+.bash_logout
+.log
+..
+.bash_history
+.Xauthority
+.bashrc
+
+6. eltex-v16@eltex-2026-summer-00-04$HISTTIMEFORMAT=%F history | tail -5
+  570  2026-07-16echo $HISTSIZE
+  571  2026-07-16compgen -f
+  572  2026-07-16compgen -f .
+  573  2026-07-16HISTTIMEFORMAT=%F history
+  574  2026-07-16HISTTIMEFORMAT=%F history | tail -5
+
+7.
+
+eltex-v16@eltex-2026-summer-00-04$date
+Пн 13 июл 2026 00:10:16 +07
+eltex-v16@eltex-2026-summer-00-04$history 2
+  576  date
+  577  history 2
+eltex-v16@eltex-2026-summer-00-04$tail /home/eltex-v16/.bash_history
+ls
+screen -r
+sceen -r
+screen -r
+git --version
+sudo apt install git
+git
+apt install git
+ssh 172.16.9.190
+ssh root@172.16.9.190
+ieltex-v16@eltex-2026-summer-00-04$PROMPT_COMMAND='history -a'
+eltex-v16@eltex-2026-summer-00-04$pwd
+/home/eltex-v16
+eltex-v16@eltex-2026-summer-00-04$history 2
+  582  pwd
+  583  history 2
+tail /home/eltex-v16/.bash_history
+PROMPT_COMMAND='history -a'
+pwd
+history 2
+
+
+10.
+eltex-v16@eltex-2026-summer-00-04$DATE=$(date +"%Y-%m-%d")
+eltex-v16@eltex-2026-summer-00-04$echo $DATE
+2026-07-13
+
+11.
+eltex-v16@eltex-2026-summer-00-04$TIME=$(date +"$H-%M-%S")
+eltex-v16@eltex-2026-summer-00-04$echo $TIME
+01-23-51
+
+12.
+eltex-v16@eltex-2026-summer-00-04$DATE_TIME="${DATE} ${TIME}"
+eltex-v16@eltex-2026-summer-00-04$echo $DATE_TIME
+2026-07-13 01-23-51
+
+13.
+eltex-v16@eltex-2026-summer-00-04$ls -a /bin /sbin | grep '[0-9]' | head -5
+addr2line
+b2sum
+base32
+base64
+bunzip2
+
+14.P1="${USER}@${HOSTNAME}-$(date +'%H-%M')"
+15.vim ~/.bashrc
+P1="${USER}@${HOSTNAME}-$(date +'%H-%M')$"
+16. 
+eltex-v16@eltex-2026-summer-00-04$mkdir -p  ~/2026-{1..12}
+eltex-v16@eltex-2026-summer-00-04$ls
+2026-1   2026-12  2026-4  2026-7  D1                   eltex-v16_part3_gt20M.log      practice2_eltex-v16_part2.log  test.txt
+2026-10  2026-2   2026-5  2026-8  dsa                  eltex-v16_part3.log            practice2_eltex-v16_part3.log
+2026-11  2026-3   2026-6  2026-9  eltex-v16_part2.log  practice2_eltex-v16_part1.log  report_part.txt

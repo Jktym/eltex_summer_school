@@ -1,0 +1,112 @@
+root@eltex-practice2-v16:~# git config --global user.name "Jktym"
+root@eltex-practice2-v16:~# git config --global user.email "yorkdan@bk.ru"
+root@eltex-practice2-v16:~# git config --global init.defaultBranch main
+root@eltex-practice2-v16:~# apt update
+Hit:1 http://ru.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:4 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [836 kB]
+Get:6 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [189 kB]
+Get:7 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1176 kB]
+Fetched 2327 kB in 3s (705 kB/s)                               
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+89 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@eltex-practice2-v16:~# apt install git gh
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+git is already the newest version (1:2.43.0-1ubuntu7.3).
+git set to manually installed.
+The following NEW packages will be installed:
+  gh
+0 upgraded, 1 newly installed, 0 to remove and 89 not upgraded.
+Need to get 8836 kB of archives.
+After this operation, 45.4 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://ru.archive.ubuntu.com/ubuntu noble-updates/universe amd64 gh amd64 2.45.0-1ubuntu0.3 [8836 kB]
+Fetched 8836 kB in 1s (7294 kB/s)
+
+root@eltex-practice2-v16:~# ssh-keygen -t ed25519 -f ~/.ssh/eltex_v16
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/eltex_v16
+Your public key has been saved in /root/.ssh/eltex_v16.pub
+The key fingerprint is:
+SHA256:UfXmGCOC3baVtx8/rZ3shfQyD7rHs6kDYG8kZUaW900 root@eltex-practice2-v16
+The key's randomart image is:
++--[ED25519 256]--+
+|         .+o.    |
+|       o += .o  E|
+|      . +++.=.+o |
+|        ++.+ B...|
+|       .S=. . +. |
+|          +  . ++|
+|         . . .=.*|
+|            ..=O+|
+|            +==*o|
++----[SHA256]-----+
+
+root@eltex-practice2-v16:~# gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? SSH
+? Upload your SSH public key to your GitHub account? /root/.ssh/eltex_v16.pub
+? Title for your SSH key: eltex-practice2-pgX-vY
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: CEA1-FDF9
+Press Enter to open github.com in your browser...
+! Failed opening a web browser at https://github.com/login/device
+  exec: "xdg-open,x-www-browser,www-browser,wslview": executable file not found in $PATH
+  Please try entering the URL in your browser manually
+✓ Authentication complete.
+- gh config set -h github.com git_protocol ssh
+✓ Configured git protocol
+! Authentication credentials saved in plain text
+✓ Uploaded the SSH key to your GitHub account: /root/.ssh/eltex_v16.pub
+✓ Logged in as Jktym
+
+root@eltex-practice2-v16:~# gh auth setup-git --hostname github.com
+root@eltex-practice2-v16:~# gh auth status
+github.com
+  ✓ Logged in to github.com account Jktym (/root/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: ssh
+  - Token: gho_************************************
+  - Token scopes: 'admin:public_key', 'gist', 'read:org', 'repo'
+
+root@eltex-practice2-v16:~# gh repo create --public eltex_summer_school
+✓ Created repository Jktym/eltex_summer_school on GitHub
+  https://github.com/Jktym/eltex_summer_school
+
+root@eltex-practice2-v16:~# mkdir ~/eltex_summer_school && cd ~/eltex_summer_school
+root@eltex-practice2-v16:~/eltex_summer_school# echo "#Репозиторий для сдачи практических заданий в летней школе eltex"  >> README.md
+root@eltex-practice2-v16:~/eltex_summer_school# git init
+Initialized empty Git repository in /root/eltex_summer_school/.git/
+root@eltex-practice2-v16:~/eltex_summer_school# git add README.md
+root@eltex-practice2-v16:~/eltex_summer_school# git commit -m "first commit"
+[main (root-commit) 2c66c46] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+root@eltex-practice2-v16:~/eltex_summer_school# git branch -M main
+root@eltex-practice2-v16:~/eltex_summer_school# git remote add origin https://github.com/Jktym/eltex_summer_school.git
+root@eltex-practice2-v16:~/eltex_summer_school# git status
+On branch main
+nothing to commit, working tree clean
+root@eltex-practice2-v16:~/eltex_summer_school# git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 297 bytes | 297.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Jktym/eltex_summer_school.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+root@eltex-practice2-v16:~/eltex_summer_school# mkdir -p module1/task1
+root@eltex-practice2-v16:~/eltex_summer_school# mkdir module1/task2
+root@eltex-practice2-v16:~/eltex_summer_school# mkdir module1/task3
+

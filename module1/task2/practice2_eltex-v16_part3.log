@@ -110,3 +110,112 @@ root@eltex-practice2-v16:~/eltex_summer_school# mkdir -p module1/task1
 root@eltex-practice2-v16:~/eltex_summer_school# mkdir module1/task2
 root@eltex-practice2-v16:~/eltex_summer_school# mkdir module1/task3
 
+eltex-v16@eltex-2026-summer-01-01$scp eltex-v16_part* root@172.16.9.190:/root/eltex_summer_school/module1/task1
+eltex-v16_part2.log                                                                                       100% 2595     6.8MB/s   00:00    
+eltex-v16_part3_gt20M.log                                                                                 100% 3152    10.9MB/s   00:00    
+eltex-v16_part3.log                                                                                       100% 6538    21.3MB/s   00:00 
+
+eltex-v16@eltex-2026-summer-01-01$scp practice2_eltex-v16_part* root@172.16.9.190:/root/eltex_summer_school/module1/task2
+practice2_eltex-v16_part1.log                                                                             100%   12KB  22.8MB/s   00:00    
+practice2_eltex-v16_part2.log                                                                             100% 4991    16.6MB/s   00:00    
+practice2_eltex-v16_part3.log                                                                             100% 5365    17.9MB/s   00:00  
+
+
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git add task1 task2
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   task1/eltex-v16_part2.log
+        new file:   task1/eltex-v16_part3.log
+        new file:   task1/eltex-v16_part3_gt20M.log
+        new file:   task2/practice2_eltex-v16_part1.log
+        new file:   task2/practice2_eltex-v16_part2.log
+        new file:   task2/practice2_eltex-v16_part3.log
+
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git commit -m 'task1, task2 done'
+[main 7ba7eb6] task1, task2 done
+ 6 files changed, 765 insertions(+)
+ create mode 100644 module1/task1/eltex-v16_part2.log
+ create mode 100644 module1/task1/eltex-v16_part3.log
+ create mode 100644 module1/task1/eltex-v16_part3_gt20M.log
+ create mode 100644 module1/task2/practice2_eltex-v16_part1.log
+ create mode 100644 module1/task2/practice2_eltex-v16_part2.log
+ create mode 100644 module1/task2/practice2_eltex-v16_part3.log
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git push origin main
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (11/11), 10.66 KiB | 10.66 MiB/s, done.
+Total 11 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Jktym/eltex_summer_school.git
+   2c66c46..7ba7eb6  main -> main
+
+root@eltex-practice2-v16:~# mkdir ~/eltex_summer_school_clone && cd ~/eltex_summer_school_clone
+root@eltex-practice2-v16:~/eltex_summer_school_clone# git clone  https://github.com/Jktym/eltex_summer_school.git
+Cloning into 'eltex_summer_school'...
+remote: Enumerating objects: 14, done.
+remote: Counting objects: 100% (14/14), done.
+remote: Compressing objects: 100% (13/13), done.
+remote: Total 14 (delta 0), reused 14 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (14/14), 10.91 KiB | 10.91 MiB/s, done.
+
+root@eltex-practice2-v16:~/eltex_summer_school_clone# cd ~/eltex_summer_school/module1/
+root@eltex-practice2-v16:~/eltex_summer_school/module1# touch test.txt
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git add test.txt
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git commit -m 'add file for test'
+[main cf34f28] add file for test
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 module1/test.txt
+root@eltex-practice2-v16:~/eltex_summer_school/module1# git push origin main
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 376 bytes | 376.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Jktym/eltex_summer_school.git
+   7ba7eb6..cf34f28  main -> main
+
+root@eltex-practice2-v16:~/eltex_summer_school/module1# cd ~/eltex_summer_school_clone/eltex_summer_school
+root@eltex-practice2-v16:~/eltex_summer_school_clone/eltex_summer_school# git fetch
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 4 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 356 bytes | 356.00 KiB/s, done.
+From https://github.com/Jktym/eltex_summer_school
+   7ba7eb6..cf34f28  main       -> origin/main
+root@eltex-practice2-v16:~/eltex_summer_school_clone/eltex_summer_school# git log origin/main
+commit cf34f2815777421b94c3a42c7c2e8edb8d94c943 (origin/main, origin/HEAD)
+Author: Jktym <yorkdan@bk.ru>
+Date:   Wed Jul 15 18:13:24 2026 +0000
+
+    add file for test
+
+commit 7ba7eb6ad196446efb5f56be148d9fb764e9effe (HEAD -> main)
+Author: Jktym <yorkdan@bk.ru>
+Date:   Wed Jul 15 18:08:59 2026 +0000
+
+    task1, task2 done
+
+commit 2c66c462e461eecfe5f9ab435677ecf0b8f3972d
+Author: Jktym <yorkdan@bk.ru>
+Date:   Wed Jul 15 16:27:10 2026 +0000
+
+    first commit
+
+
+t@eltex-practice2-v16:~/eltex_summer_school_clone/eltex_summer_school# git diff main origin/main
+diff --git a/module1/test.txt b/module1/test.txt
+new file mode 100644
+index 0000000..e69de29
+root@eltex-practice2-v16:~/eltex_summer_school_clone/eltex_summer_school# git merge
+Updating 7ba7eb6..cf34f28
+Fast-forward
+ module1/test.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 module1/test.txt

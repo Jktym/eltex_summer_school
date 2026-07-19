@@ -1,10 +1,10 @@
 #ifndef CALC_H
 #define CALC_H
 
-int add(int x, int y);
-int sub(int x, int y);
-int mul(int x, int y);
-int div(int x, int y);
+float add(float x, float y);
+float sub(float x, float y);
+float mul(float x, float y);
+float div(float x, float y);
 
 
 #endif

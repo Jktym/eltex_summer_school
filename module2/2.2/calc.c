@@ -1,17 +1,17 @@
 #include "calc.h"
 
-int add(int x, int y) {
+float add(float x, float y) {
     return (x + y);
 }
 
-int sub(int x, int y) {
+float sub(float x, float y) {
     return (x - y);
 }
 
-int mul(int x, int y) {
+float mul(float x, float y) {
     return (x * y);
 }
 
-int div(int x, int y) {
+float div(float x, float y) {
     return (x / y);
 }

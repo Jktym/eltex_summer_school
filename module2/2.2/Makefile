@@ -11,5 +11,5 @@ calc.o: calc.c
 	gcc -c calc.c
 
 clean:
-	rm -rf *.o' calc
+	rm -rf *.o calc
 

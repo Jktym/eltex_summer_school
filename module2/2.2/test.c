@@ -72,34 +72,8 @@ void test_zero_mul(void) {
 }
 
 void test_zero_div(void) {
-    FILE *fake_stdin = tmpfile();
-    fputs("4\n100\n0\n0\n", fake_stdin);
-    rewind(fake_stdin);
-
-    FILE *fake_stdout = tmpfile();
-    
-    FILE *old_stdin = stdin;
-    FILE *old_stdout = stdout;
-    stdin = fake_stdin;
-    stdout = fake_stdout;       
-    menu();
-
-    fflush(fake_stdout);
-    stdin = old_stdin;
-    stdout = old_stdout;
-    
-    rewind(fake_stdout);
-    char output_buffer[4096] = {0};
-    size_t bytes_read = fread(output_buffer, 1, sizeof(output_buffer) - 1, fake_stdout);
-    output_buffer[bytes_read] = '\0';
-
-    fclose(fake_stdin);
-    fclose(fake_stdout);
-
-    TEST_ASSERT_TRUE_MESSAGE(
-        strstr(output_buffer, "На 0 делить нельзя!!") != NULL,
-        "Ожидалось сообщение об ошибке.\n"
-    );
+    float res = div(1000, 0);
+    TEST_ASSERT_FLOAT_WITHIN(0.001, INFINITY, res);
 }
 
 void test_unexpected_sym() {

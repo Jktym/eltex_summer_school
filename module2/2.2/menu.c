@@ -26,9 +26,9 @@ void menu() {
                 printf("%.3f * %.3f = %.3f\n", x, y, mul(x, y));
                 break;
             case 4:
-                if (y)
-                printf("%.3f / %.3f = %f\n", x, y, div(x, y));
-                else printf("На 0 делить нельзя!!\n");
+                float res = div(x, y);
+                if(isinf(res)) printf("На 0 делить нельзя!!\n");
+                else printf("%.3f / %.3f = %f\n", x, y, res);
                 break;
             case 0:
                 return;

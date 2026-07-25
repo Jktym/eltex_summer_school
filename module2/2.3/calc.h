@@ -2,7 +2,7 @@
 #define CALC_H
 
 #include <stdio.h>
-
+#include <math.h>
 
 float add(float x, float y);
 float sub(float x, float y);

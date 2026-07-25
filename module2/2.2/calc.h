@@ -1,6 +1,8 @@
 #ifndef CALC_H
 #define CALC_H
 
+#include <math.h>
+
 float add(float x, float y);
 float sub(float x, float y);
 float mul(float x, float y);

@@ -15,9 +15,9 @@ void menu() {
             scanf(" %f", &x);
             printf("Введите второй аргумент: ");
             scanf(" %f", &y);
-            if (choice == 4 && !y) printf("На 0 делить нельзя!!!\n");
+            float result = select(choice) (x, y);
+            if (isinf(result)) printf("На 0 делить нельзя!!!\n");
             else {
-                float result = select(choice) (x, y);
                 char oper = print_oper(choice);
                 printf("%.3f %c %.3f = %f\n", x, oper, y, result);
             }

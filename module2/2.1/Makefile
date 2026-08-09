@@ -12,13 +12,10 @@ menu.o: menu.c
 phonebook.o: phonebook.c
 	gcc -c phonebook.c
 
-# ================== ТЕСТЫ ==================
-# Компилируем phonebook.c ОТДЕЛЬНО для тестов с переопределением CONTACTS_FILE
 test: phonebook_test.o unity.o test_phonebook.o
 	gcc phonebook_test.o unity.o test_phonebook.o -o test_result
 	./test_result
 
-# phonebook_test.o — это тот же phonebook.c, но с другим именем файла
 phonebook_test.o: phonebook.c phonebook.h
 	gcc -DCONTACTS_FILE=\"test_contacts.txt\" -c phonebook.c -o phonebook_test.o
 

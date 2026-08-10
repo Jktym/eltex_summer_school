@@ -14,9 +14,22 @@ void contact_menu(Phonebook *pb, int choice_id) {
         scanf("%d", &choice);
         switch(choice) {
             case edit_selected_contact:
-                printf("Выберите поле для редактирования:\n1. Имя\n2. Фамилия\n...");
+                printf("Выберите поле для редактирования (0 для выхода):\n"
+                       "1. Имя\n"
+                       "2. Фамилия\n"
+                       "3. Отчество\n"
+                       "4. Место работы\n"
+                       "5. Должность\n"
+                       "6. Моб. телефон\n"
+                       "7. Раб. телефон\n"
+                       "8. Email\n"
+                       "9. Ссылка на соц. сети\n"
+                       );                
                 int field;
                 scanf("%d", &field);
+                int c;
+                while((c = getchar()) != '\n' && c != EOF);
+                if(field == 0) break;
                 if (field > 0 && field < 10) {
                     edit_contact(pb, choice_id, field);
                     save_phonebook(pb); 

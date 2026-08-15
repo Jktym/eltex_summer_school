@@ -166,7 +166,7 @@ void menu(Phonebook *pb) {
                 }
 
                 int original_index = -1;
-                original_index = get_contact_id(found_contacts[selected]);
+                original_index = get_contact_id(found_contacts[selected-1]);
 
                 if (original_index == -1) {
                     printf("Ошибка: не удалось найти контакт в книге.\n");

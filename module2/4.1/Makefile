@@ -25,5 +25,7 @@ unity.o: unity.c
 test_phonebook.o: test_phonebook.c
 	gcc -c test_phonebook.c -o test_phonebook.o
 
+rebuild: clean all
+
 clean:
 	rm -rf *.o phonebook test_result

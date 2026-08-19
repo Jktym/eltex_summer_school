@@ -1,4 +1,4 @@
-#if`def MENU_H
+#ifndef MENU_H
 #define MENU_H
 
 #include "package_generator.h"

@@ -12,7 +12,10 @@ queue.o: queue.c queue.h
 package_generator.o: package_generator.c package_generator.h
 	gcc -c package_generator.c -o package_generator.o
 
+test: test.o queue.o unity.o
+	gcc test.c queue.c unity.c -o test
+
 rebuild: clean all
 
 clean:
-	rm -f *.o queue
+	rm -f *.o queue test

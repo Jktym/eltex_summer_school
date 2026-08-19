@@ -64,4 +64,6 @@ void print_contact_list(Phonebook *pb);
 Contact *get_contact(Phonebook *pb, int choice_id);
 int get_contact_id(Contact *c);
 void free_phonebook(Phonebook *pb);
+void display_tree_visual(Phonebook *pb);
+static void print_tree_visual_rec(Contact *root, int level);
 #endif

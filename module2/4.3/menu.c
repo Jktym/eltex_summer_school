@@ -64,7 +64,7 @@ void contact_menu(Phonebook *pb, int choice_id) {
 
 void menu(Phonebook *pb) {
     while(1) {
-        const char main_menu[] = {"------ГЛАВНОЕ МЕНЮ------\n1.Вывести список контактов\n2.Добавить контакт\n3.Поиск контакта\n0.Выход\n"};
+        const char main_menu[] = {"------ГЛАВНОЕ МЕНЮ------\n1.Вывести список контактов\n2.Добавить контакт\n3.Поиск контакта\n4.Отобразить в виде дерева.\n0.Выход\n"};
         printf("%s", main_menu);
         int choice;
         scanf("%d", &choice);
@@ -176,6 +176,9 @@ void menu(Phonebook *pb) {
                 contact_menu(pb, original_index);
                 break;
         }
+            case print_tree:
+                display_tree_visual(pb);
+                break;
             case exit_menu:
                 free_phonebook(pb);
                 free(pb);

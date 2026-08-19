@@ -7,6 +7,7 @@ enum main_menu_items {
     print_contacts = 1,
     add_new_contact = 2,
     find_contact = 3,
+    print_tree = 4,
     exit_menu = 0
 };
 

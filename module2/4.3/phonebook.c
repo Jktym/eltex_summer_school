@@ -359,3 +359,28 @@ void free_phonebook(Phonebook *pb) {
     pb->root = NULL;
     pb->count = 0;
 }
+
+static void print_tree_visual_rec(Contact *root, int level) {
+    if (root == NULL) {
+        return;
+    }
+    print_tree_visual_rec(root->right, level + 1);
+
+    for (int i = 0; i < level; i++) {
+        printf("        "); 
+    }
+
+    printf("---> [%d] %s\n", root->data->id, root->data->surname);
+
+    print_tree_visual_rec(root->left, level + 1);
+}
+
+void display_tree_visual(Phonebook *pb) {
+    if (pb == NULL || pb->root == NULL) {
+        printf("Дерево пусто.\n");
+        return;
+    }
+    printf("\n=== СТРУКТУРА ДЕРЕВА (Корень слева, правые узлы сверху) ===\n");
+    print_tree_visual_rec(pb->root, 0);
+    printf("===========================================================\n");
+}

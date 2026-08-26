@@ -13,8 +13,8 @@
 
 
 MODULE_DESCRIPTION("Example module illustrating the use of Keyboard LEDs.");
-MODULE_LICENSE("ELTEX_SUMMER_SCHOOL");
-MODELE_AUTHOR("Yerkenov_Daniyar");
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Yerkenov_Daniyar");
 static struct timer_list my_timer;
 static struct tty_driver *my_driver;
 //char kbledstatus = 0;
@@ -117,11 +117,11 @@ static int __init kbleds_init(void)
          */
         
         //init_timer(&my_timer);
-        timer_setup(&my_timer, my_timer_func, 0);
-        //my_timer.function = my_timer_func;
-        //my_timer.data = (unsigned long)&kbledstatus;
-        my_timer.expires = jiffies + BLINK_DELAY;
-        add_timer(&my_timer);
+        // timer_setup(&my_timer, my_timer_func, 0);
+        // //my_timer.function = my_timer_func;
+        // //my_timer.data = (unsigned long)&kbledstatus;
+        // my_timer.expires = jiffies + BLINK_DELAY;
+        // add_timer(&my_timer);
         return 0;
 }
 static void __exit kbleds_cleanup(void)
@@ -131,6 +131,7 @@ static void __exit kbleds_cleanup(void)
         timer_delete(&my_timer);
         (my_driver->ops->ioctl) (vc_cons[fg_console].d->port.tty, KDSETLED,
                             RESTORE_LEDS);
+        kobject_put(example_kobject);
 }
 module_init(kbleds_init);
 module_exit(kbleds_cleanup);

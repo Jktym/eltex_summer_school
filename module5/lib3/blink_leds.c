@@ -11,19 +11,18 @@
 #include <linux/vt_kern.h>
 #include <linux/timer.h>
 
+#define BLINK_DELAY   HZ/5
+#define ALL_LEDS_ON   0x07
+#define RESTORE_LEDS  0xFF
 
 MODULE_DESCRIPTION("Example module illustrating the use of Keyboard LEDs.");
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Yerkenov_Daniyar");
 static struct timer_list my_timer;
 static struct tty_driver *my_driver;
-//char kbledstatus = 0;
 static int _kbledstatus = 0;
 static char *dirname = "systest";
-//static int test = 3;// cod
-#define BLINK_DELAY   HZ/5
-#define ALL_LEDS_ON   0x07
-#define RESTORE_LEDS  0xFF
+
 
 static struct kobject *example_kobject;
 static int test;
@@ -34,25 +33,8 @@ static ssize_t foo_show(struct kobject *kobj, struct kobj_attribute *attr,
         return sprintf(buf, "%d\n", test);
 }
 
-
-/*
- * Function my_timer_func blinks the keyboard LEDs periodically by invoking
- * command KDSETLED of ioctl() on the keyboard driver. To learn more on virtual
- * terminal ioctl operations, please see file:
- *     /usr/src/linux/drivers/char/vt_ioctl.c, function vt_ioctl().
- *
- * The argument to KDSETLED is alternatively set to 7 (thus causing the led
- * mode to be set to LED_SHOW_IOCTL, and all the leds are lit) and to 0xFF
- * (any value above 7 switches back the led mode to LED_SHOW_FLAGS, thus
- * the LEDs reflect the actual keyboard status). To learn more on this,
- * please see file:
- *     /usr/src/linux/drivers/char/keyboard.c, function setledstate().
- *
- */
-//static void my_timer_func(unsigned long ptr)
 static void my_timer_func(struct timer_list *ptr)
 {
-        //int *pstatus = (int *)ptr;
         int *pstatus = &_kbledstatus;
         if (*pstatus == test)
                 *pstatus = RESTORE_LEDS;
@@ -69,8 +51,6 @@ static ssize_t foo_store(struct kobject *kobj, struct kobj_attribute *attr,
 {
         sscanf(buf, "%du", &test);
         timer_setup(&my_timer, my_timer_func, 0);
-        //my_timer.function = my_timer_func;
-        //my_timer.data = (unsigned long)&kbledstatus;
         my_timer.expires = jiffies + BLINK_DELAY;
         add_timer(&my_timer);
         return count;
@@ -115,13 +95,7 @@ static int __init kbleds_init(void)
         /*
          * Set up the LED blink timer the first time
          */
-        
-        //init_timer(&my_timer);
-        // timer_setup(&my_timer, my_timer_func, 0);
-        // //my_timer.function = my_timer_func;
-        // //my_timer.data = (unsigned long)&kbledstatus;
-        // my_timer.expires = jiffies + BLINK_DELAY;
-        // add_timer(&my_timer);
+
         return 0;
 }
 static void __exit kbleds_cleanup(void)

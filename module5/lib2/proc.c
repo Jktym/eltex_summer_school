@@ -42,6 +42,9 @@ static const struct proc_ops proc_fops = {
 static void create_new_proc_entry(void) { //use of void for no arguments is compulsory now
     proc_create(name, mode, NULL, &proc_fops);
     msg = kmalloc(msg_size * sizeof(char), GFP_KERNEL);
+    if (!msg) {
+        return -ENOMEM;
+    }
 }
 
 static int proc_init (void) {

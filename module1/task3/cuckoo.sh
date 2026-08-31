@@ -23,15 +23,11 @@ log "Startup!"
 
 while true; do
     if read -r line < "$FIFO"; then
-        if [[ "$line" =~ ^([^[]+)\[([0-9]+)\]:\ how\ much\ time\ do\ I\ have\?$ ]]; then
-            NAME="${BASH_REMATCH[1]}"
-            PID="${BASH_REMATCH[2]}"
-            N=$(( RANDOM % 9 + 2 ))
-            log "$NAME[$PID] $N"
-            echo "$N" > "$FIFO"
-        else
-            continue
-        fi
+        N=$(( RANDOM % 9 + 2 ))
+        
+        log "$line -> $N"
+        
+        echo "$N" > "$FIFO"
     fi
 done
 

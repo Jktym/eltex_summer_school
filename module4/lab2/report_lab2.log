@@ -1,0 +1,656 @@
+Тема: Настройка протокола STP (IEEE 802.1D)
+
+1) Для заданной на схеме schema-lab2 сети, состоящей из управляемых коммутаторов и персональных компьютеров
+настроить протокол STP, назначив явно один из коммутаторов корневым настройкой приоритета
+
+
+vIOS-L2-01#enable
+vIOS-L2-01#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+vIOS-L2-01(config)#spanning-tree vlan 1 priority 4096
+vIOS-L2-01(config)#exit
+
+
+2) Проверить доступность каждого с каждым всех персональных компьютеров (VPCS), результаты запротоколировать
+
+Назначение ip:
+
+PC1> ip 192.168.1.1/24
+Checking for duplicate address...
+PC1 : 192.168.1.1 255.255.255.0
+
+PC2> ip 192.168.1.2/24
+Checking for duplicate address...
+PC2 : 192.168.1.2 255.255.255.0
+
+PC3> ip 192.168.1.3/24
+Checking for duplicate address...
+PC3 : 192.168.1.3 255.255.255.0
+
+PC4> ip 192.168.1.4/24
+Checking for duplicate address...
+PC4 : 192.168.1.4 255.255.255.0
+
+PC5> ip 192.168.1.5/24
+Checking for duplicate address...
+PC5 : 192.168.1.5 255.255.255.0
+
+PC6> ip 192.168.1.6/24
+Checking for duplicate address...
+PC6 : 192.168.1.6 255.255.255.0
+
+Проверка доступности:
+PC1:
+
+PC1> ping 192.168.1.2
+
+84 bytes from 192.168.1.2 icmp_seq=1 ttl=64 time=8.317 ms
+84 bytes from 192.168.1.2 icmp_seq=2 ttl=64 time=5.645 ms
+84 bytes from 192.168.1.2 icmp_seq=3 ttl=64 time=9.932 ms
+84 bytes from 192.168.1.2 icmp_seq=4 ttl=64 time=18.123 ms
+84 bytes from 192.168.1.2 icmp_seq=5 ttl=64 time=13.028 ms
+
+PC1> ping 192.168.1.3
+
+84 bytes from 192.168.1.3 icmp_seq=1 ttl=64 time=25.685 ms
+84 bytes from 192.168.1.3 icmp_seq=2 ttl=64 time=28.369 ms
+84 bytes from 192.168.1.3 icmp_seq=3 ttl=64 time=33.356 ms
+84 bytes from 192.168.1.3 icmp_seq=4 ttl=64 time=41.648 ms
+84 bytes from 192.168.1.3 icmp_seq=5 ttl=64 time=40.669 ms
+
+PC1> ping 192.168.1.4
+
+84 bytes from 192.168.1.4 icmp_seq=1 ttl=64 time=27.158 ms
+84 bytes from 192.168.1.4 icmp_seq=2 ttl=64 time=25.768 ms
+84 bytes from 192.168.1.4 icmp_seq=3 ttl=64 time=41.237 ms
+84 bytes from 192.168.1.4 icmp_seq=4 ttl=64 time=23.429 ms
+84 bytes from 192.168.1.4 icmp_seq=5 ttl=64 time=84.987 ms
+
+PC1> ping 192.168.1.5
+
+84 bytes from 192.168.1.5 icmp_seq=1 ttl=64 time=25.924 ms
+84 bytes from 192.168.1.5 icmp_seq=2 ttl=64 time=19.784 ms
+84 bytes from 192.168.1.5 icmp_seq=3 ttl=64 time=12.341 ms
+84 bytes from 192.168.1.5 icmp_seq=4 ttl=64 time=34.047 ms
+84 bytes from 192.168.1.5 icmp_seq=5 ttl=64 time=30.843 ms
+
+PC1> ping 192.168.1.6
+
+84 bytes from 192.168.1.6 icmp_seq=1 ttl=64 time=20.630 ms
+84 bytes from 192.168.1.6 icmp_seq=2 ttl=64 time=52.186 ms
+84 bytes from 192.168.1.6 icmp_seq=3 ttl=64 time=28.271 ms
+84 bytes from 192.168.1.6 icmp_seq=4 ttl=64 time=29.598 ms
+84 bytes from 192.168.1.6 icmp_seq=5 ttl=64 time=31.873 ms
+
+PC2:
+
+PC2> ping 192.168.1.1
+
+84 bytes from 192.168.1.1 icmp_seq=1 ttl=64 time=6.992 ms
+84 bytes from 192.168.1.1 icmp_seq=2 ttl=64 time=13.633 ms
+84 bytes from 192.168.1.1 icmp_seq=3 ttl=64 time=9.957 ms
+84 bytes from 192.168.1.1 icmp_seq=4 ttl=64 time=9.342 ms
+84 bytes from 192.168.1.1 icmp_seq=5 ttl=64 time=13.922 ms
+
+PC2> ping 192.168.1.3
+
+84 bytes from 192.168.1.3 icmp_seq=1 ttl=64 time=34.380 ms
+84 bytes from 192.168.1.3 icmp_seq=2 ttl=64 time=27.713 ms
+84 bytes from 192.168.1.3 icmp_seq=3 ttl=64 time=32.069 ms
+84 bytes from 192.168.1.3 icmp_seq=4 ttl=64 time=28.228 ms
+84 bytes from 192.168.1.3 icmp_seq=5 ttl=64 time=40.221 ms
+
+PC2> ping 192.168.1.4
+
+84 bytes from 192.168.1.4 icmp_seq=1 ttl=64 time=46.258 ms
+84 bytes from 192.168.1.4 icmp_seq=2 ttl=64 time=27.078 ms
+84 bytes from 192.168.1.4 icmp_seq=3 ttl=64 time=61.409 ms
+84 bytes from 192.168.1.4 icmp_seq=4 ttl=64 time=18.410 ms
+84 bytes from 192.168.1.4 icmp_seq=5 ttl=64 time=45.813 ms
+
+PC2> ping 192.168.1.5
+
+84 bytes from 192.168.1.5 icmp_seq=1 ttl=64 time=25.031 ms
+84 bytes from 192.168.1.5 icmp_seq=2 ttl=64 time=9.930 ms
+84 bytes from 192.168.1.5 icmp_seq=3 ttl=64 time=50.515 ms
+84 bytes from 192.168.1.5 icmp_seq=4 ttl=64 time=33.625 ms
+84 bytes from 192.168.1.5 icmp_seq=5 ttl=64 time=14.586 ms
+
+PC2> ping 192.168.1.6
+
+84 bytes from 192.168.1.6 icmp_seq=1 ttl=64 time=35.039 ms
+84 bytes from 192.168.1.6 icmp_seq=2 ttl=64 time=11.417 ms
+84 bytes from 192.168.1.6 icmp_seq=3 ttl=64 time=13.161 ms
+84 bytes from 192.168.1.6 icmp_seq=4 ttl=64 time=44.950 ms
+84 bytes from 192.168.1.6 icmp_seq=5 ttl=64 time=30.393 ms
+
+PC3:
+
+PC3>
+PC3> ping 192.168.1.1
+
+84 bytes from 192.168.1.1 icmp_seq=1 ttl=64 time=31.599 ms
+84 bytes from 192.168.1.1 icmp_seq=2 ttl=64 time=21.400 ms
+84 bytes from 192.168.1.1 icmp_seq=3 ttl=64 time=31.068 ms
+84 bytes from 192.168.1.1 icmp_seq=4 ttl=64 time=18.017 ms
+84 bytes from 192.168.1.1 icmp_seq=5 ttl=64 time=22.455 ms
+
+PC3> ping 192.168.1.2
+
+84 bytes from 192.168.1.2 icmp_seq=1 ttl=64 time=50.317 ms
+84 bytes from 192.168.1.2 icmp_seq=2 ttl=64 time=33.889 ms
+84 bytes from 192.168.1.2 icmp_seq=3 ttl=64 time=32.179 ms
+84 bytes from 192.168.1.2 icmp_seq=4 ttl=64 time=23.259 ms
+84 bytes from 192.168.1.2 icmp_seq=5 ttl=64 time=28.125 ms
+
+PC3> ping 192.168.1.4
+
+84 bytes from 192.168.1.4 icmp_seq=1 ttl=64 time=14.079 ms
+84 bytes from 192.168.1.4 icmp_seq=2 ttl=64 time=6.941 ms
+84 bytes from 192.168.1.4 icmp_seq=3 ttl=64 time=5.123 ms
+84 bytes from 192.168.1.4 icmp_seq=4 ttl=64 time=19.670 ms
+84 bytes from 192.168.1.4 icmp_seq=5 ttl=64 time=6.960 ms
+
+PC3> ping 192.168.1.5
+
+84 bytes from 192.168.1.5 icmp_seq=1 ttl=64 time=23.954 ms
+84 bytes from 192.168.1.5 icmp_seq=2 ttl=64 time=18.485 ms
+84 bytes from 192.168.1.5 icmp_seq=3 ttl=64 time=29.024 ms
+84 bytes from 192.168.1.5 icmp_seq=4 ttl=64 time=33.243 ms
+84 bytes from 192.168.1.5 icmp_seq=5 ttl=64 time=14.273 ms
+
+PC3> ping 192.168.1.6
+
+84 bytes from 192.168.1.6 icmp_seq=1 ttl=64 time=18.094 ms
+84 bytes from 192.168.1.6 icmp_seq=2 ttl=64 time=21.611 ms
+84 bytes from 192.168.1.6 icmp_seq=3 ttl=64 time=30.755 ms
+84 bytes from 192.168.1.6 icmp_seq=4 ttl=64 time=38.527 ms
+84 bytes from 192.168.1.6 icmp_seq=5 ttl=64 time=25.166 ms
+
+PC4:
+
+PC4> ping 192.168.1.1
+
+84 bytes from 192.168.1.1 icmp_seq=1 ttl=64 time=23.503 ms
+84 bytes from 192.168.1.1 icmp_seq=2 ttl=64 time=34.440 ms
+84 bytes from 192.168.1.1 icmp_seq=3 ttl=64 time=35.781 ms
+84 bytes from 192.168.1.1 icmp_seq=4 ttl=64 time=26.346 ms
+84 bytes from 192.168.1.1 icmp_seq=5 ttl=64 time=19.647 ms
+
+PC4> ping 192.168.1.2
+
+84 bytes from 192.168.1.2 icmp_seq=1 ttl=64 time=28.800 ms
+84 bytes from 192.168.1.2 icmp_seq=2 ttl=64 time=27.803 ms
+84 bytes from 192.168.1.2 icmp_seq=3 ttl=64 time=42.882 ms
+84 bytes from 192.168.1.2 icmp_seq=4 ttl=64 time=16.678 ms
+84 bytes from 192.168.1.2 icmp_seq=5 ttl=64 time=49.314 ms
+
+PC4> ping 192.168.1.3
+
+84 bytes from 192.168.1.3 icmp_seq=1 ttl=64 time=13.011 ms
+84 bytes from 192.168.1.3 icmp_seq=2 ttl=64 time=9.782 ms
+84 bytes from 192.168.1.3 icmp_seq=3 ttl=64 time=5.496 ms
+84 bytes from 192.168.1.3 icmp_seq=4 ttl=64 time=16.531 ms
+84 bytes from 192.168.1.3 icmp_seq=5 ttl=64 time=14.843 ms
+
+PC4> ping 192.168.1.5
+
+84 bytes from 192.168.1.5 icmp_seq=1 ttl=64 time=28.205 ms
+84 bytes from 192.168.1.5 icmp_seq=2 ttl=64 time=36.088 ms
+84 bytes from 192.168.1.5 icmp_seq=3 ttl=64 time=25.890 ms
+84 bytes from 192.168.1.5 icmp_seq=4 ttl=64 time=43.011 ms
+84 bytes from 192.168.1.5 icmp_seq=5 ttl=64 time=39.140 ms
+
+PC4> ping 192.168.1.6
+
+84 bytes from 192.168.1.6 icmp_seq=1 ttl=64 time=26.554 ms
+84 bytes from 192.168.1.6 icmp_seq=2 ttl=64 time=13.586 ms
+84 bytes from 192.168.1.6 icmp_seq=3 ttl=64 time=27.483 ms
+84 bytes from 192.168.1.6 icmp_seq=4 ttl=64 time=28.017 ms
+84 bytes from 192.168.1.6 icmp_seq=5 ttl=64 time=29.661 ms
+
+PC5:
+
+PC5> ping 192.168.1.1
+
+84 bytes from 192.168.1.1 icmp_seq=1 ttl=64 time=18.117 ms
+84 bytes from 192.168.1.1 icmp_seq=2 ttl=64 time=15.156 ms
+84 bytes from 192.168.1.1 icmp_seq=3 ttl=64 time=39.572 ms
+84 bytes from 192.168.1.1 icmp_seq=4 ttl=64 time=27.028 ms
+84 bytes from 192.168.1.1 icmp_seq=5 ttl=64 time=25.487 ms
+
+PC5> ping 192.168.1.2
+
+84 bytes from 192.168.1.2 icmp_seq=1 ttl=64 time=26.483 ms
+84 bytes from 192.168.1.2 icmp_seq=2 ttl=64 time=35.191 ms
+84 bytes from 192.168.1.2 icmp_seq=3 ttl=64 time=16.714 ms
+84 bytes from 192.168.1.2 icmp_seq=4 ttl=64 time=24.436 ms
+84 bytes from 192.168.1.2 icmp_seq=5 ttl=64 time=26.983 ms
+
+PC5> ping 192.168.1.3
+
+84 bytes from 192.168.1.3 icmp_seq=1 ttl=64 time=26.694 ms
+84 bytes from 192.168.1.3 icmp_seq=2 ttl=64 time=13.608 ms
+84 bytes from 192.168.1.3 icmp_seq=3 ttl=64 time=25.692 ms
+84 bytes from 192.168.1.3 icmp_seq=4 ttl=64 time=37.624 ms
+84 bytes from 192.168.1.3 icmp_seq=5 ttl=64 time=12.006 ms
+
+PC5> ping 192.168.1.4
+
+84 bytes from 192.168.1.4 icmp_seq=1 ttl=64 time=32.516 ms
+84 bytes from 192.168.1.4 icmp_seq=2 ttl=64 time=19.653 ms
+84 bytes from 192.168.1.4 icmp_seq=3 ttl=64 time=29.347 ms
+84 bytes from 192.168.1.4 icmp_seq=4 ttl=64 time=30.949 ms
+84 bytes from 192.168.1.4 icmp_seq=5 ttl=64 time=22.437 ms
+
+PC5> ping 192.168.1.6
+
+84 bytes from 192.168.1.6 icmp_seq=1 ttl=64 time=14.237 ms
+84 bytes from 192.168.1.6 icmp_seq=2 ttl=64 time=4.255 ms
+84 bytes from 192.168.1.6 icmp_seq=3 ttl=64 time=16.562 ms
+84 bytes from 192.168.1.6 icmp_seq=4 ttl=64 time=10.294 ms
+84 bytes from 192.168.1.6 icmp_seq=5 ttl=64 time=11.618 ms
+
+PC6:
+
+PC6> ping 192.168.1.1
+
+84 bytes from 192.168.1.1 icmp_seq=1 ttl=64 time=11.128 ms
+84 bytes from 192.168.1.1 icmp_seq=2 ttl=64 time=31.394 ms
+84 bytes from 192.168.1.1 icmp_seq=3 ttl=64 time=33.732 ms
+84 bytes from 192.168.1.1 icmp_seq=4 ttl=64 time=40.974 ms
+84 bytes from 192.168.1.1 icmp_seq=5 ttl=64 time=27.092 ms
+
+PC6> ping 192.168.1.2
+
+84 bytes from 192.168.1.2 icmp_seq=1 ttl=64 time=15.582 ms
+84 bytes from 192.168.1.2 icmp_seq=2 ttl=64 time=31.855 ms
+84 bytes from 192.168.1.2 icmp_seq=3 ttl=64 time=43.404 ms
+84 bytes from 192.168.1.2 icmp_seq=4 ttl=64 time=29.512 ms
+84 bytes from 192.168.1.2 icmp_seq=5 ttl=64 time=39.142 ms
+
+PC6> ping 192.168.1.3
+
+84 bytes from 192.168.1.3 icmp_seq=1 ttl=64 time=31.015 ms
+84 bytes from 192.168.1.3 icmp_seq=2 ttl=64 time=41.679 ms
+84 bytes from 192.168.1.3 icmp_seq=3 ttl=64 time=23.779 ms
+84 bytes from 192.168.1.3 icmp_seq=4 ttl=64 time=27.653 ms
+84 bytes from 192.168.1.3 icmp_seq=5 ttl=64 time=25.554 ms
+
+PC6> ping 192.168.1.4
+
+84 bytes from 192.168.1.4 icmp_seq=1 ttl=64 time=43.404 ms
+84 bytes from 192.168.1.4 icmp_seq=2 ttl=64 time=22.522 ms
+84 bytes from 192.168.1.4 icmp_seq=3 ttl=64 time=40.481 ms
+84 bytes from 192.168.1.4 icmp_seq=4 ttl=64 time=31.443 ms
+84 bytes from 192.168.1.4 icmp_seq=5 ttl=64 time=21.783 ms
+
+PC6> ping 192.168.1.5
+
+84 bytes from 192.168.1.5 icmp_seq=1 ttl=64 time=8.807 ms
+84 bytes from 192.168.1.5 icmp_seq=2 ttl=64 time=9.472 ms
+84 bytes from 192.168.1.5 icmp_seq=3 ttl=64 time=10.218 ms
+84 bytes from 192.168.1.5 icmp_seq=4 ttl=64 time=1.924 ms
+84 bytes from 192.168.1.5 icmp_seq=5 ttl=64 time=6.745 ms
+
+
+3) На изображении схемы отметить BID каждого коммутатора и режимы работы портов (RP/DP/blocked) и стоимости маршрутов, результат сохранить в файл
+
+Layer1-Switch-1:
+vIOS-L2-01>show spanning-tree
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     0cb1.51cd.0000
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    4097   (priority 4096 sys-id-ext 1)
+             Address     0cb1.51cd.0000
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Desg FWD 4         128.1    Shr
+Gi0/1               Desg FWD 4         128.2    Shr
+Gi0/2               Desg FWD 4         128.3    Shr
+Gi0/3               Desg FWD 4         128.4    Shr
+Gi1/0               Desg FWD 4         128.5    Shr
+Gi1/1               Desg FWD 4         128.6    Shr
+Gi1/2               Desg FWD 4         128.7    Shr
+Gi1/3               Desg FWD 4         128.8    Shr
+
+Layer1-Switch-2:
+vIOS-L2-01>show spanning-tree
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     0cb1.51cd.0000
+             Cost        4
+             Port        1 (GigabitEthernet0/0)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0c29.4fae.0000
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Root FWD 4         128.1    Shr
+Gi0/1               Altn BLK 4         128.2    Shr
+Gi0/2               Desg FWD 4         128.3    Shr
+Gi0/3               Desg FWD 4         128.4    Shr
+Gi1/0               Desg FWD 4         128.5    Shr
+Gi1/1               Desg FWD 4         128.6    Shr
+Gi1/2               Altn BLK 4         128.7    Shr
+Gi1/3               Altn BLK 4         128.8    Shr
+
+Layer2-Switch-3:
+vIOS-L2-01>show spanning-tree
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     0cb1.51cd.0000
+             Cost        4
+             Port        1 (GigabitEthernet0/0)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0cdd.ed94.0000
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Root FWD 4         128.1    Shr
+Gi0/1               Altn BLK 4         128.2    Shr
+Gi0/2               Altn BLK 4         128.3    Shr
+Gi0/3               Altn BLK 4         128.4    Shr
+Gi1/0               Desg FWD 4         128.5    Shr
+Gi1/1               Desg FWD 4         128.6    Shr
+
+Layer2-Switch-4:
+vIOS-L2-01>show spanning-tree
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     0cb1.51cd.0000
+             Cost        4
+             Port        1 (GigabitEthernet0/0)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0cf8.35a7.0000
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Root FWD 4         128.1    Shr
+Gi0/1               Altn BLK 4         128.2    Shr
+Gi0/2               Altn BLK 4         128.3    Shr
+Gi0/3               Altn BLK 4         128.4    Shr
+Gi1/0               Desg FWD 4         128.5    Shr
+Gi1/1               Desg FWD 4         128.6    Shr
+
+Layer2-Switch-5:
+
+vIOS-L2-01>show spanning-tree
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     0cb1.51cd.0000
+             Cost        4
+             Port        1 (GigabitEthernet0/0)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0c05.5640.0000
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Root FWD 4         128.1    Shr
+Gi0/1               Altn BLK 4         128.2    Shr
+Gi0/2               Desg FWD 4         128.3    Shr
+Gi0/3               Desg FWD 4         128.4    Shr
+Gi1/0               Desg FWD 4         128.5    Shr
+Gi1/1               Desg FWD 4         128.6    Shr
+
+4) При помощи wireshark отследить передачу пакетов hello от корневого коммутатора на всех линках (nb!), результаты включить в отчет
+
+Пакет hello, перехваченный на линке от Корневого коммутатора (возраст 0)
+Frame 934: Packet, 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface -, id 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+    Protocol Identifier: Spanning Tree Protocol (0x0000)
+    Protocol Version Identifier: Spanning Tree (0)
+    BPDU Type: Configuration (0x00)
+    BPDU flags: 0x00
+    Root Identifier: 4096 / 1 / 0c:b1:51:cd:00:00
+    Root Path Cost: 0
+    Bridge Identifier: 4096 / 1 / 0c:b1:51:cd:00:00
+    Port identifier: 0x8003
+    Message Age: 0
+    Max Age: 20
+    Hello Time: 2
+    Forward Delay: 15
+
+Пакет hello, перехваченный на заблокированном линке между Switch-2 и Switch-3 (возраст 1)
+Frame 1025: Packet, 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface -, id 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+    Protocol Identifier: Spanning Tree Protocol (0x0000)
+    Protocol Version Identifier: Spanning Tree (0)
+    BPDU Type: Configuration (0x00)
+    BPDU flags: 0x00
+    Root Identifier: 4096 / 1 / 0c:b1:51:cd:00:00
+    Root Path Cost: 4
+    Bridge Identifier: 32768 / 1 / 0c:29:4f:ae:00:00
+    Port identifier: 0x8003
+    Message Age: 1
+    Max Age: 20
+    Hello Time: 2
+    Forward Delay: 15
+
+Пакеты hello присутсвуют на всех линках, включая заблокированные
+
+5) Изменить стоимость маршрута для порта RP произвольного назначенного (designated) коммутатора, повторить действия из п.3, результат сохранить в отдельный файл
+Layer2-Switch-3:
+vIOS-L2-01#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+vIOS-L2-01(config)#interface Gi0/0
+vIOS-L2-01(config-if)#spanning-tree vlan 1 cost 100
+vIOS-L2-01(config-if)#end
+
+
+vIOS-L2-01#show spanning-tree
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    4097
+             Address     0cb1.51cd.0000
+             Cost        4
+             Port        2 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0cdd.ed94.0000
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/0               Altn BLK 100       128.1    Shr
+Gi0/1               Root FWD 4         128.2    Shr
+Gi0/2               Altn BLK 4         128.3    Shr
+Gi0/3               Altn BLK 4         128.4    Shr
+Gi1/0               Desg FWD 4         128.5    Shr
+Gi1/1               Desg FWD 4         128.6    Shr
+
+Порт Gi0/0 стал не выгоден из-за высокой стоимости, поэтому теперь он заблокирован, а Gi0/1 стал Root.
+6) Сохранить файлы конфигураций устройств в виде набора файлов с именами, соответствующими именам устройств
+
+Layer1-Switch-1:
+vIOS-L2-01>enable
+vIOS-L2-01#write memory
+Building configuration...
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+Compressed configuration from 5276 bytes to 2029 bytes
+*Sep  1 14:38:04.676: %SYS-3-CPUHOG: Task is running for (2000)msecs, more than (2000)msecs (37/12),process = Async write process.
+*Sep  1 14:38:07.284: %SYS-3-CPUHOG: Task is running for (1999)msecs, more than (2000)msecs (29/0),process = Async write process.
+*Sep  1 14:38:12.000: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (43/22),process = Async write process.
+*Sep  1 14:38:14.708: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (76/45),process = Async write process.
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 86CE9Ez 8679B9z 8574D3z 85914Ez - Process "Exec", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 889E8Dz 889D8Dz 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889FE2
+[OK]
+*Sep  1 14:38:17.348: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (32/0),process = Async write process.
+*Sep  1 14:38:19.752: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (70/36),process = Exec.
+*Sep  1 14:38:22.560: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (32/0),process = Async write process.
+*Sep  1 14:38:22.706: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Sep  1 14:38:24.335: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+
+Layer1-Switch-2:
+
+vIOS-L2-01>enable
+vIOS-L2-01#write memory
+Building configuration...
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 889E8Dz 889D8Dz 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889FE2
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+Compressed configuration from 5239 bytes to 2001 bytes
+*Sep  1 14:37:46.297: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (37/3),process = Async write process.
+*Sep  1 14:37:48.605: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (68/38),process = Async write process.
+*Sep  1 14:37:50.885: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (26/0),process = Async write process.
+*Sep  1 14:37:54.461: %SYS-3-CPUHOG: Task is running for (1999)msecs, more than (2000)msecs (71/50),process = Async write process.
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+[OK]
+*Sep  1 14:37:57.489: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than (2000)msecs (35/0),process = Async write process.
+*Sep  1 14:38:01.865: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (27/0),process = Async write process.
+*Sep  1 14:38:02.427: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+vIOS-L2-01#
+*Sep  1 14:38:04.437: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+
+Layer2-Switch-3:
+vIOS-L2-01#write memory
+Building configuration...
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 860
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+Compressed configuration from 5072 bytes to 1946 bytes[OK]
+*Sep  1 15:57:23.874: %SYS-3-CPUHOG: Task is running for (2000)msecs, more than.
+*Sep  1 15:57:26.558: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than.
+*Sep  1 15:57:29.362: %SYS-3-CPUHOG: Task is running for (1999)msecs, more than.
+*Sep  1 15:57:31.810: %SYS-3-CPUHOG: Task is running for (2000)msecs, more than.
+*Sep  1 15:57:35.701: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updat.
+vIOS-L2-01#
+*Sep  1 15:57:37.052: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to.
+
+Layer2-Switch-4:
+vIOS-L2-01>enable
+vIOS-L2-01#write memory
+Building configuration...
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 867
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 860
+Compressed configuration from 5041 bytes to 1930 bytes[OK]
+*Sep  1 15:56:00.250: %SYS-3-CPUHOG: Task is running for (1997)msecs, more than.
+*Sep  1 15:56:02.486: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than.
+*Sep  1 15:56:06.574: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than.
+*Sep  1 15:56:09.686: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than.
+*Sep  1 15:56:12.470: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than.
+*Sep  1 15:56:16.544: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updat.
+*Sep  1 15:56:18.249: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to.
+
+Layer2-Switch-5:
+vIOS-L2-01>enable
+vIOS-L2-01#write memory
+Building configuration...
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x008B5430
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x008B5430
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x008B5430
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x00889D77
+Compressed configuration from 5041 bytes to 1927 bytes
+*Sep  1 15:55:45.267: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (17/3),process = Async write process.
+*Sep  1 15:55:48.387: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (16/0),process = Async write process.
+*Sep  1 15:55:50.971: %SYS-3-CPUHOG: Task is running for (2000)msecs, more than (2000)msecs (42/20),process = Async write process.
+*Sep  1 15:55:53.515: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (18/0),process = Async write process.
+*Sep  1 15:55:55.807: %SYS-3-CPUHOG: Task is running for (1999)msecs, more than (2000)msecs (34/20),process = Async write process.
+-Traceback= 1C489D8z 88DD15z 8B5BAEz 8B58E0z 8B554Dz 8958B2z 8934B0z 837471z 86B283z 86A3E7z 867C37z 86D0D4z 870997z - Process "Async write process", CPU hog, PC 0x008B5430
+[OK]
+*Sep  1 15:55:58.567: %SYS-3-CPUHOG: Task is running for (1998)msecs, more than (2000)msecs (15/0),process = Async write process.
+*Sep  1 15:56:02.251: %SYS-3-CPUHOG: Task is running for (1999)msecs, more than (2000)msecs (57/37),process = Async write process.
+*Sep  1 15:56:02.909: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Sep  1 15:56:04.483: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+
+PC1> save
+Saving startup configuration to startup.vpc
+.  done
+
+PC2> save
+Saving startup configuration to startup.vpc
+.  done
+
+PC3>
+PC3> save
+Saving startup configuration to startup.vpc
+.  done
+
+PC4> save
+Saving startup configuration to startup.vpc
+.  done
+
+PC5> save
+Saving startup configuration to startup.vpc
+.  done
+
+PC6> save
+Saving startup configuration to startup.vpc
+.  done
